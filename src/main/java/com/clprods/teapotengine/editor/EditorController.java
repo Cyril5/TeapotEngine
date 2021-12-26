@@ -3,6 +3,7 @@ package com.clprods.teapotengine.editor;
 import com.clprods.teapotengine.JMEApp;
 import com.clprods.teapotengine.core.Entity;
 import com.clprods.teapotengine.editor.views.RenderFrame;
+import com.clprods.teapotengine.editor.views.TestForm;
 import com.jme3.material.Material;
 import com.jme3.material.Materials;
 import com.jme3.math.ColorRGBA;
@@ -15,8 +16,14 @@ public final class EditorController {
     private static EditorController instance;
     private Entity selectedEntity;
 
+    private final TestForm testForm;
     private final RenderFrame renderFrame;
-    private JMEApp jmeApp;
+    private final JMEApp jmeApp;
+
+    public TestForm getStateMachineWindowForm() {
+        return testForm;
+    }
+
 
     public enum GameEditorState {EDITOR,GAME_STARTS,GAME_UPDATE};
     public GameEditorState gameEditorState = GameEditorState.EDITOR;
@@ -30,6 +37,7 @@ public final class EditorController {
         System.out.println("Make an app from EditorController");
 
         renderFrame = new RenderFrame();
+        testForm = new TestForm();
     }
 
     public static EditorController getInstance() {
@@ -81,11 +89,13 @@ public final class EditorController {
 
     public void startGame() {
         gameEditorState = GameEditorState.GAME_STARTS;
+        testForm.setVisible(false);
     }
 
     public void stopGame() {
         System.out.println("Stop Game");
 
         gameEditorState = GameEditorState.EDITOR;
+        testForm.setVisible(true);
     }
 }

@@ -89,7 +89,7 @@ public class Launcher {
             //rootWindow.getContentPane().add(jmeCanvas);
             frame.setVisible(true);
             rootWindow.setVisible(true);
-            rootWindow.getStateEditorFrame().setVisible(true);
+            EditorController.getInstance().getStateMachineWindowForm().setVisible(true);
 
             //rootWindow.getStateEditorFrame().moveToFront();
 

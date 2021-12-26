@@ -1,17 +1,14 @@
 package com.clprods.teapotengine.editor.views;
 
 import com.clprods.teapotengine.editor.EditorController;
-import com.clprods.teapotengine.editor.views.RenderFrame;
-import com.clprods.teapotengine.editor.views.TestForm;
 
 import javax.swing.*;
-import javax.swing.event.MenuEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class MDIEditorFrame extends JFrame {
 
-    private final TestForm testForm = new TestForm();
+    //private final TestForm testForm = new TestForm();
 
     private JButton startButton;
     private JButton stopButton;
@@ -38,15 +35,9 @@ public class MDIEditorFrame extends JFrame {
         renderFrame.setMaximizable(true);
         desktopPane.add(renderFrame);
 
-        testForm.setResizable(true);
-        desktopPane.add(testForm);
+        EditorController.getInstance().getStateMachineWindowForm().setResizable(true);
+        desktopPane.add(EditorController.getInstance().getStateMachineWindowForm());
 
-    }
-
-
-
-    public TestForm getStateEditorFrame() {
-        return testForm;
     }
 
     /* Methode de construction de la barre de menu */
@@ -127,7 +118,7 @@ public class MDIEditorFrame extends JFrame {
     }
 
     private void createCubeTest( ActionEvent event ) {
-        testForm.getCreateStateMachineButton().setEnabled(true);
+        EditorController.getInstance().getStateMachineWindowForm().getCreateStateMachineButton().setEnabled(true);
         EditorController.getInstance().createCubeEntity();
     }
 }
