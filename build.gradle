@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+def jme3 = [v:'3.4.0-stable', g:'org.jmonkeyengine']
+dependencies {
+
+    implementation 'com.intellij:forms_rt:7.0.3'
+
+    /*
+    implementation "${jme3.g}:jme3-core:${jme3.v}"
+    runtimeOnly "${jme3.g}:jme3-desktop:${jme3.v}"
+    runtimeOnly "${jme3.g}:jme3-lwjgl:${jme3.v}"
+     */
+
+    //implementation "com.jayfella:jfx-11-jme-embedded:1.0.0"
+
+}
+
+javafx {
+    version = "17"
+    modules = [
+            'javafx.base',
+            'javafx.controls',
+            'javafx.fxml',
+            'javafx.graphics',
+            'javafx.swing'
+    ]
+}
+
+test {
+    useJUnitPlatform()
+}
